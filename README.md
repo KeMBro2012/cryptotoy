@@ -8,7 +8,7 @@ This is a toy, not a tool. Your data is probably not safe here!
 
 Nothing. Absolutely nothing. Actually, the product of my boredom.
 
-I'm not a crypto expert, this probably isn't secure, and it's probably not wise to pretend it is, so don't; or do, but do so at your own risk. If you *are* a crypto xpert, by all means, audit this (when it's done -- there's nothing here to audit right now) and let me know what you think; I'm not going for secure, just functional, but if I manage both, I'll be ecstatic!
+I'm not a crypto expert, this probably isn't secure, and it's probably not wise to pretend it is, so don't; or do, but do so at your own risk. If you *are* a crypto expert, by all means, audit this (when it's done -- there's nothing here to audit right now) and let me know what you think; I'm not going for secure, just functional, but if I manage both, I'll be ecstatic!
 
 ## If you're not a crypto expert, why are you wasting your time implementing a crypto algothm?
 
@@ -20,4 +20,4 @@ Not that cryptotoy is intended to be secure. Ever.
 
 ## Okay, then... why bother with a crypto tool that you claim isn't secure?
 
-You did't read the first line of this README, did you? This is a toy, not a tool. I'm doing this for fun. Anything else that comes of this is just icing.
+You didn't read the first line of this README, did you? This is a toy, not a tool. I'm doing this for fun. Anything else that comes of this is just icing.

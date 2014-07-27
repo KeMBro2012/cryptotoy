@@ -13,7 +13,7 @@ import java.util.Random;
  *
  */
 
-public class Enigma {
+public class cryptotoy {
 	public    int statusCode; // Our "return" code
 	public String statusText; // Our "return" reason
 
@@ -22,13 +22,13 @@ public class Enigma {
 	private            int contentLength; // Length of content, in bits
 	private            int contentBlocks; // ceil(contentLength / 4096)
 	private            int contentPos;    // Position within content, in blocks
-	private            int keySegments;   // (contentlength % keytextLength) + 1
+	private            int keySegments;   // (contentLength % keytextLength) + 1
 	private        boolean decrypt;       // false = encrypt, true = decrypt
-	private     ByteBuffer keytext;       // ==
-	private     ByteBuffer rootkey;       // Concatenation of MD5 sums of keySegments segments of keytext
-	private     ByteBuffer cipherkey;     // 4096-bit concatenation of MD5 sums of 16 segments of rootkey
-	private     ByteBuffer rollingkey;    // Current 4096-bit XOR key
-	private     ByteBuffer nextkey;       // Next 4096-bit XOR key, derived from current value of decoded
+	private     ByteBuffer keyText;       // ==
+	private     ByteBuffer rootKey;       // Concatenation of MD5 sums of keySegments segments of keytext
+	private     ByteBuffer cipherKey;     // 4096-bit concatenation of MD5 sums of 16 segments of rootkey
+	private     ByteBuffer rollingKey;    // Current 4096-bit XOR key
+	private     ByteBuffer nextKey;       // Next 4096-bit XOR key, derived from current value of decoded
 	private     ByteBuffer decoded;       // Next 4096-bit block of content to encode (if encrypting) or last-decoded block (if decrypting)
 	private     ByteBuffer encoded;       // Next 4096-bit block of content to decode (if decrypting) or last-encoded block (if encrypting)
 	private     ByteBuffer contentBuffer; // Content string from commandline (contentType 1);
@@ -40,7 +40,7 @@ public class Enigma {
 		private  ByteBuffer contentBuffer; // Content string from commandline (contentType 1);
 		private InputStream contentStream; // getResourceAsStream(contentBuffer) (contentType 0);
 		private     boolean decrypt;       // false = encrypt, true = decrypt
-		private  ByteBuffer keytext;       // ==
+		private  ByteBuffer keyText;       // ==
 
 		public Builder(int contentType) {
 			this.contentType = contentType;
@@ -54,7 +54,7 @@ public class Enigma {
 		}
 
 		public Builder keytext(ByteBuffer keytext) {
-			this.keytext = keytext;
+			this.keyText = keytext;
 			return this;
 		}
 
@@ -63,19 +63,19 @@ public class Enigma {
 			return this;
 		}
 
-		public Enigma build() {
-			return new Enigma(this);
+		public cryptotoy build() {
+			return new cryptotoy(this);
 		}
 	}
 
-	public Enigma(Builder b) {
+	public cryptotoy(Builder b) {
 		this.statusCode = 0;
 		this.statusText = "OK";
 
 		this.contentType    = b.contentType;
 		this.contentBuffer  = b.contentBuffer;
 		this.contentStream  = b.contentStream;
-		this.keytext        = b.keytext;
+		this.keyText        = b.keyText;
 		this.decrypt        = b.decrypt;
 
 		if (this.decrypt) {
@@ -84,10 +84,10 @@ public class Enigma {
 			this.contentPos = -1;
 		}
 
-		if (this.makeRootkey()
-		 && this.makeCipherkey()
-		 && this.makeRollingkey()) {
-			// getNextContent, makeNextKey, (encode/decode), output, makeRollingkey
+		if (this.makeRootKey()
+		 && this.makeCipherKey()
+		 && this.makeRollingKey()) {
+			// getNextContent, makeNextKey, (encode/decode), output, makeRollingKey
 			getNextContent(); // placeholder!
 		}
 	}
@@ -98,20 +98,20 @@ public class Enigma {
 		return header;
 	}
 
-	private boolean makeRootkey() {
+	private boolean makeRootKey() {
 		// Always from keytext
 
 		return true;
 	}
 
-	private boolean makeCipherkey() {
+	private boolean makeCipherKey() {
 		// Always from rootkey
 
 		return true;
 	}
 
-	private boolean makeRollingkey() {
-		// If rollingkey is empty, grab cipherkey; else, grab nextkey
+	private boolean makeRollingKey() {
+		// If rollingKey is empty, grab cipherKey; else, grab nextKey
 
 		return true;
 	}
